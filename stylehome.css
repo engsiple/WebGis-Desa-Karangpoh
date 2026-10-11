@@ -1,0 +1,250 @@
+/* =========================================================
+   1. REGISTRASI FONT DAFONT / EKSTERNAL
+   ========================================================= */
+@font-face {
+  font-family: 'FontExtendedDaFont';
+  src: url('font/coolvetica/Coolvetica\ Rg.otf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FontTeksDaFont';
+  src: url('font/garet/Garet-Book.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* =========================================================
+   2. DESAIN MINIMALIS & CLEAN
+   ========================================================= */
+
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'FontTeksDaFont', Arial, sans-serif;
+  background-color: #f8f9fa; /* Latar belakang off-white */
+  color: #333;
+  width: 100%;
+  height: 100vh; /* Layar penuh */
+  overflow: hidden; /* Mencegah scroll bar jika tidak perlu */
+}
+
+/* --- NAVBAR --- */
+.navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 8%;
+  box-sizing: border-box;
+  z-index: 100;
+}
+
+.navbar .brand {
+  font-family: 'FontExtendedDaFont', sans-serif;
+  font-size: 16px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #4fa596;
+  text-decoration: none;
+}
+
+.navbar nav {
+  display: flex;
+  gap: 40px;
+}
+
+.navbar nav a {
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  color: #666;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.navbar nav a:hover, 
+.navbar nav a.aktif {
+  color: #111;
+  font-weight: bold;
+}
+
+/* --- HERO SECTION (SPLIT LAYOUT) --- */
+.hero {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+}
+
+/* Sisi Kiri (Area Teks) */
+.hero-content {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  position: relative;
+  background-color: #f5f5f4;
+  z-index: 2; /* Agar berada di atas gambar saat ditumpuk */
+}
+
+/* Dekorasi Garis Kiri */
+.side-indicator {
+  position: absolute;
+  left: 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  color: #ccc;
+  font-size: 12px;
+}
+
+.side-indicator .line {
+  width: 1px;
+  height: 40px;
+  background-color: #ddd;
+}
+
+.side-indicator .number {
+  transform: rotate(-90deg); /* Memutar teks */
+}
+
+/* Wrapper Teks */
+.text-wrapper {
+  padding-left: 15%; /* Jarak dari kiri */
+  width: 100%;
+  max-width: 600px;
+}
+
+.subtitle {
+  font-size: 12px;
+  color: #a0a0a0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.hero h1 {
+  font-family: 'FontExtendedDaFont', sans-serif;
+  font-size: 56px;
+  font-weight: 400; /* Dibuat tidak terlalu tebal agar elegan */
+  color: #333;
+  margin: 0 0 40px 0;
+  letter-spacing: 1px;
+}
+
+.hero p {
+  font-size: 14px;
+  line-height: 1.8;
+  color: #999;
+  max-width: 80%; /* Agar teks tidak menabrak gambar */
+}
+
+/* --- ACTION BAR (OVERLAP EFFECT & GLASSMORPHISM) --- */
+.action-bar {
+  display: flex;
+  align-items: center;
+  
+  /* Efek Glassmorphism */
+  background: linear-gradient(135deg, rgba(173, 216, 230, 0.4), rgba(152, 251, 152, 0.4));
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 50px; /* Bentuk kapsul */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  
+  height: 70px;
+  width: 125%;
+  margin-bottom: 40px;
+  position: relative;
+  z-index: 10;
+  overflow: hidden; /* Memastikan sudut tombol kanan ikut melengkung */
+}
+
+.search-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 25px;
+}
+
+/* Penyesuaian warna teks agar kontras dengan background kaca */
+.search-info span {
+  font-size: 11px;
+  color: #444; /* Dibuat lebih gelap */
+  margin-bottom: 4px;
+}
+
+.search-info strong {
+  font-size: 14px;
+  color: #000; /* Dibuat lebih gelap */
+  font-weight: bold;
+}
+
+/* Tombol Teal */
+.action-bar .tombol {
+  background-color: #4fa596; 
+  color: #ffffff;
+  height: 100%;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+.action-bar .tombol:hover {
+  background-color: #3f8679;
+}
+
+/* --- Sisi Kanan (Gambar Latar - Slideshow) --- */
+.hero-image {
+  width: 50%;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+  overflow: hidden; /* Menyembunyikan bagian gambar yang melebihi area */
+  background-color: #e0e0e0; /* Warna latar sementara jika gambar belum dimuat */
+}
+
+/* Mengatur ukuran dan posisi setiap gambar dalam slideshow */
+.hero-image .slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Memastikan gambar memenuhi area tanpa distorsi rasio */
+  object-position: right center; /* Fokus gambar di sebelah kanan tengah */
+  opacity: 0; /* Semua gambar disembunyikan secara default */
+  transition: opacity 1s ease-in-out; /* Efek transisi pudar selama 1 detik */
+  z-index: 0;
+}
+
+/* Gambar dengan class 'active' akan ditampilkan */
+.hero-image .slide.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+/* --- Responsif (Mobile) --- */
+@media (max-width: 900px) {
+  .hero { flex-direction: column; height: auto; }
+  .hero-content { width: 100%; padding: 100px 5% 50px 5%; }
+  .text-wrapper { padding-left: 0; }
+  .action-bar { width: 100%; flex-direction: column; height: auto; }
+  .search-info { padding: 15px; border-left: none !important; border-bottom: 1px solid #eee; width: 100%; box-sizing: border-box;}
+  .action-bar .tombol { width: 100%; padding: 20px 0; box-sizing: border-box;}
+  .side-indicator { display: none; }
+  
+  /* Pastikan container slideshow memiliki tinggi di mobile */
+  .hero-image { width: 100%; height: 400px; display: block;} 
+}

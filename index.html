@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Beranda - WebGIS Desa Karangpoh</title>
+    <link rel="stylesheet" href="stylehome.css" />
+  </head>
+  <body>
+    <!-- Navbar Absolute di atas -->
+    <header class="navbar">
+      <a class="brand" href="index.html">WEB GIS DESA KARANGPOH</a>
+      <nav>
+        <a href="index.html" class="aktif">Beranda</a>
+        <a href="peta.html">Peta</a>
+      </nav>
+    </header>
+
+    <!-- Hero Section (Split Kiri-Kanan) -->
+    <section class="hero">
+      
+      <!-- Sisi Kiri (Teks & Latar Terang) -->
+      <div class="hero-content">
+        <!-- Elemen dekoratif garis & angka di kiri -->
+        <div class="side-indicator">
+          <span class="line"></span>
+          <span class="number">01</span>
+        </div>
+
+        <div class="text-wrapper">
+          <span class="subtitle">Desa Karangpoh, Pejagoan, Kabupaten Kebumen</span>
+          <h1>Selamat Datang.</h1>
+          
+          <!-- Action Bar -->
+          <div class="action-bar">
+            <div class="search-info">
+              <span>Lokasi</span>
+              <strong>Desa Karangpoh</strong>
+            </div>
+            <div class="search-info" style="border-left: 1px solid #eee;">
+              <span>Kategori</span>
+              <strong>Web GIS</strong>
+            </div>
+            <a class="tombol" href="peta.html">Buka Peta</a>
+          </div>
+
+          <p>
+            Desa Karangpoh merupakan salah satu satuan wilayah administratif tingkat desa yang secara hirarki berada di bawah naungan Pemerintah Kecamatan Pejagoan, Kabupaten Kebumen, Provinsi Jawa Tengah.
+            Pada halaman ini, Anda dapat menjelajahi peta interaktif yang menampilkan berbagai informasi geografis dan data penting terkait Desa Karangpoh. Temukan lokasi, fasilitas, dan informasi lainnya dengan mudah melalui antarmuka yang ramah pengguna.
+          </p>
+        </div>
+      </div>
+      
+      <!-- Sisi Kanan (Gambar Full - Slideshow) -->
+      <div class="hero-image" id="hero-slideshow">
+        <!-- Foto Pertama (Aktif duluan) -->
+        <img src="foto/DJI_0431.JPG" alt="Desa Karangpoh 1" class="slide active">
+        <!-- Foto Kedua (Foto yang baru diunggah) -->
+        <img src="foto/DJI_0221.jpg" alt="Desa Karangpoh 2" class="slide">
+      </div>
+
+    </section>
+
+    <!-- Menggunakan script khusus untuk beranda -->
+    <script src="script-home.js"></script>
+  </body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WebGIS Desa Srinanti</title>
+
+    <!-- Leaflet CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+    
+    <!-- Memanggil CSS Anda -->
+    <link rel="stylesheet" href="tylepeta.css" />
+
+    <!-- KODE CSS LANGSUNG DI HTML UNTUK MEMAKSA UI BERUBAH -->
+    <style>
+      /* 1. Menghilangkan kotak standar bawaan Leaflet */
+      .leaflet-control-layers.leaflet-control-layers-expanded {
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+      }
+
+      /* 2. Membuat kotak latar bentuk kapsul untuk menu */
+      .leaflet-control-layers-list {
+        background-color: rgba(255, 255, 255, 0.9) !important;
+        padding: 10px 25px !important;
+        border-radius: 30px !important;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important;
+      }
+
+      /* 3. Menyusun pilihan peta sejajar ke samping (Horizontal) */
+      .leaflet-control-layers-base {
+        display: flex !important;
+        gap: 25px !important;
+        align-items: center;
+      }
+
+      .leaflet-control-layers-base label {
+        margin: 0 !important;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+      }
+
+      /* 4. MENGHILANGKAN TOMBOL BULAT RADIO BUTTON */
+      .leaflet-control-layers-base input[type="radio"],
+      .leaflet-control-layers-base input.leaflet-control-layers-selector {
+        display: none !important;
+      }
+
+      /* 5. GAYA TEKS NORMAL (Abu-abu, mirip teks "Peta" di navbar) */
+      .leaflet-control-layers-base span {
+        font-family: Arial, sans-serif !important;
+        font-size: 14px !important;
+        color: #888 !important; 
+        transition: color 0.3s ease;
+      }
+
+      /* Efek saat tulisan didekati kursor (hover) */
+      .leaflet-control-layers-base label:hover span {
+        color: #111 !important;
+      }
+
+      /* 6. GAYA TEKS AKTIF (Hitam tebal, mirip teks "Beranda" di navbar) */
+      .leaflet-control-layers-base label:has(input:checked) span {
+        color: #111 !important;
+        font-weight: bold !important;
+      }
+    </style>
+  </head>
+  
+  <body>
+    <!-- Tombol Kembali ke Beranda -->
+    <a href="index.html" class="btn-kembali">&#8592; Kembali ke Beranda</a>
+
+    <!-- Map Container -->
+    <div id="map"></div>
+
+    <!-- Leaflet JavaScript -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <!-- Our JavaScript -->
+    <script src="script.js"></script>
+  </body>
+</html>
