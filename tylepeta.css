@@ -126,7 +126,7 @@ html, body {
 }
 
 /* =========================================================
-   KOTAK LEGENDA PETA (Glassmorphism Card)
+   KOTAK LEGENDA PETA (Bisa diseret / Draggable)
    ========================================================= */
 .legend {
   background: linear-gradient(135deg, rgba(173, 216, 230, 0.5), rgba(152, 251, 152, 0.5)) !important;
@@ -143,6 +143,23 @@ html, body {
   margin-bottom: 25px !important;
   margin-right: 20px !important;
   min-width: 210px;
+
+  /* Menambahkan petunjuk kursor dan interaksi */
+  cursor: grab !important; 
+  pointer-events: auto !important;
+  
+  /* Pastikan legenda selalu di atas dan terbebas dari posisi default */
+  z-index: 10000 !important; 
+}
+
+/* Saat legenda ditekan/ditahan */
+.legend:active {
+  cursor: grabbing !important;
+}
+
+/* Mencegah isi legenda mengganggu interaksi tarikan */
+.legend-item, .legend b, .legend i {
+  pointer-events: none !important; 
 }
 
 .legend b {
@@ -175,21 +192,21 @@ html, body {
   flex-shrink: 0;
 }
 
-
 /* =========================================================
-   ANIMASI TRANSISI HALAMAN (SANGAT SMOOTH & LAMA)
+   ANIMASI TRANSISI HALAMAN (LEBIH CEPAT: 0.5 DETIK)
    ========================================================= */
 body {
   opacity: 0;
-  transform: translateX(50px); 
-  /* Animasi masuk selama 1.5 detik */
-  animation: slideFadeIn 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards; 
+  /* Jarak geser diperpendek menjadi 30px */
+  transform: translateX(30px); 
+  /* Durasi menjadi 1 detik */
+  animation: slideFadeIn 1s cubic-bezier(0.25, 1, 0.5, 1) forwards; 
 }
 
 @keyframes slideFadeIn {
   0% { 
     opacity: 0; 
-    transform: translateX(50px); 
+    transform: translateX(30px); 
   }
   100% { 
     opacity: 1; 
@@ -198,8 +215,8 @@ body {
 }
 
 body.fade-out {
-  /* Animasi keluar selama 1.5 detik */
-  animation: slideFadeOut 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  /* Durasi menjadi 1 detik */
+  animation: slideFadeOut 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 @keyframes slideFadeOut {
@@ -209,6 +226,6 @@ body.fade-out {
   }
   100% { 
     opacity: 0; 
-    transform: translateX(-50px); 
+    transform: translateX(-30px); 
   }
 }

@@ -60,16 +60,16 @@ body, html {
 }
 
 .navbar nav a {
-  font-family: Arial, sans-serif;
-  font-size: 13px;
-  color: #666;
+  font-family: 'data/font/garet/Garet-Book.otf', Arial, sans-serif;
+  font-size: 15px;                               
+  color: #000000;
   text-decoration: none;
   transition: color 0.3s;
 }
 
 .navbar nav a:hover, 
 .navbar nav a.aktif {
-  color: #111;
+  color: #000000;
   font-weight: bold;
 }
 
@@ -86,7 +86,7 @@ body, html {
   display: flex;
   align-items: center;
   position: relative;
-  background-color: #f5f5f4;
+  background-color: #d5f5de;
   z-index: 2; /* Agar berada di atas gambar saat ditumpuk */
 }
 
@@ -250,39 +250,3 @@ body, html {
 }
 
 
-/* =========================================================
-   ANIMASI TRANSISI HALAMAN (SANGAT SMOOTH & LAMA)
-   ========================================================= */
-body {
-  opacity: 0;
-  transform: translateX(50px); 
-  /* Animasi masuk selama 1.5 detik */
-  animation: slideFadeIn 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards; 
-}
-
-@keyframes slideFadeIn {
-  0% { 
-    opacity: 0; 
-    transform: translateX(50px); 
-  }
-  100% { 
-    opacity: 1; 
-    transform: translateX(0); 
-  }
-}
-
-body.fade-out {
-  /* Animasi keluar selama 1.5 detik */
-  animation: slideFadeOut 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
-
-@keyframes slideFadeOut {
-  0% { 
-    opacity: 1; 
-    transform: translateX(0); 
-  }
-  100% { 
-    opacity: 0; 
-    transform: translateX(-50px); 
-  }
-}
