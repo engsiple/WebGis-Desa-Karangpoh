@@ -21,3 +21,26 @@ document.addEventListener('DOMContentLoaded', function() {
         setInterval(nextSlide, 5000);
     }
 });
+
+// =========================================================
+// ANIMASI TRANSISI PINDAH HALAMAN (SANGAT SMOOTH & LAMA)
+// =========================================================
+document.addEventListener("DOMContentLoaded", function () {
+  const transitionLinks = document.querySelectorAll("a[href='index.html'], a[href='peta.html']");
+
+  transitionLinks.forEach(link => {
+    link.addEventListener("click", function (e) {
+      e.preventDefault(); // Menahan klik agar tidak langsung pindah URL
+      const targetUrl = this.href; 
+
+      // Memicu efek redup dan geser ke kiri (fade-out)
+      document.body.classList.add("fade-out");
+
+      // Browser dipaksa menunggu 1,5 detik sampai layar benar-benar kosong
+      // sebelum memuat halaman baru
+      setTimeout(() => {
+        window.location.href = targetUrl;
+      }, 1500); 
+    });
+  });
+});

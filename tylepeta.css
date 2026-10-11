@@ -174,3 +174,41 @@ html, body {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   flex-shrink: 0;
 }
+
+
+/* =========================================================
+   ANIMASI TRANSISI HALAMAN (SANGAT SMOOTH & LAMA)
+   ========================================================= */
+body {
+  opacity: 0;
+  transform: translateX(50px); 
+  /* Animasi masuk selama 1.5 detik */
+  animation: slideFadeIn 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards; 
+}
+
+@keyframes slideFadeIn {
+  0% { 
+    opacity: 0; 
+    transform: translateX(50px); 
+  }
+  100% { 
+    opacity: 1; 
+    transform: translateX(0); 
+  }
+}
+
+body.fade-out {
+  /* Animasi keluar selama 1.5 detik */
+  animation: slideFadeOut 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes slideFadeOut {
+  0% { 
+    opacity: 1; 
+    transform: translateX(0); 
+  }
+  100% { 
+    opacity: 0; 
+    transform: translateX(-50px); 
+  }
+}

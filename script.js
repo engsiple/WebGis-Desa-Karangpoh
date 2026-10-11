@@ -51,7 +51,6 @@ const warnaKemiringan = {
   "Sangat Curam": "#ef4444"  
 };
 
-// Menyesuaikan kategori dan warna dengan gambar QGIS (landcover) yang baru
 const warnaTutupanLahan = {
   "Air": "#4a90e2",
   "Vegetasi": "#3b823e",
@@ -219,7 +218,6 @@ fetch("data/tutupanlahan_202607.geojson")
         const p = feature.properties || {};
         let jenis = "";
         
-        // Coba cari kolom standar
         const kemungkinanKolom = ["Name", "NAME", "tutupan", "TUTUPAN", "guna_lahan", "Guna_Lahan", "kategori", "Kategori", "jenis", "Jenis", "REMARK", "KETERANGAN", "LANDUSE", "NAMOBJ", "kelas", "Layer"];
         for (let kolom of kemungkinanKolom) {
           if (p[kolom]) {
@@ -228,7 +226,6 @@ fetch("data/tutupanlahan_202607.geojson")
           }
         }
 
-        // Jika tidak ketemu, ambil nilai teks pertama
         if (!jenis) {
           for (let key in p) {
             if (typeof p[key] === 'string' && isNaN(p[key])) {
@@ -238,7 +235,7 @@ fetch("data/tutupanlahan_202607.geojson")
           }
         }
         
-        if (!jenis) jenis = "Tidak Diketahui"; // Fallback akhir
+        if (!jenis) jenis = "Tidak Diketahui"; 
 
         layer.bindPopup(`<b>Tutupan Lahan</b><br>Kategori: ${jenis}`);
         layer.bindTooltip(`Tutupan: ${jenis}`);
@@ -322,7 +319,6 @@ const legend = L.control({ position: "bottomright" });
 legend.onAdd = function () {
   const div = L.DomUtil.create("div", "legend");
 
-  // Legenda Tutupan Lahan disesuaikan persis dengan susunan & warna QGIS landcover
   let html = "<b>Tutupan Lahan</b>";
   html += '<div class="legend-item"><i style="background:#4a90e2"></i>Air</div>';
   html += '<div class="legend-item"><i style="background:#3b823e"></i>Vegetasi</div>';
@@ -346,7 +342,55 @@ legend.onAdd = function () {
   html += '<div class="legend-item"><i style="background:#7f1d1d"></i>Jalan Setapak</div>';
 
   div.innerHTML = html;
+  
+  L.DomEvent.disableClickPropagation(div);
+  
   return div;
 };
 
 legend.addTo(map);
+
+// =========================================================
+// MENGAKTIFKAN FITUR DRAG PADA LEGENDA (VERSI KUAT)
+// =========================================================
+setTimeout(() => {
+  const legendElement = document.querySelector(".legend");
+  const legendContainer = legendElement ? legendElement.parentElement : null;
+
+  if (legendElement && legendContainer) {
+    // Membebaskan legenda dari layout bawaan Leaflet
+    legendElement.style.position = 'absolute';
+    legendElement.style.bottom = '10px'; // Jarak sedikit dari bawah
+    legendElement.style.right = '10px';  // Jarak sedikit dari kanan
+
+    const draggable = new L.Draggable(legendElement);
+    draggable.enable();
+    
+    draggable.on("dragstart", function() {
+      legendElement.style.cursor = "grabbing";
+    });
+    draggable.on("dragend", function() {
+      legendElement.style.cursor = "grab";
+    });
+  }
+}, 1000);
+
+// =========================================================
+// ANIMASI TRANSISI PINDAH HALAMAN (SANGAT SMOOTH & LAMA)
+// =========================================================
+document.addEventListener("DOMContentLoaded", function () {
+  const transitionLinks = document.querySelectorAll("a[href='index.html'], a[href='peta.html']");
+
+  transitionLinks.forEach(link => {
+    link.addEventListener("click", function (e) {
+      e.preventDefault(); 
+      const targetUrl = this.href; 
+
+      document.body.classList.add("fade-out");
+
+      setTimeout(() => {
+        window.location.href = targetUrl;
+      }, 1500); 
+    });
+  });
+});
